@@ -115,7 +115,55 @@ plt.show()
 
  - Step1:库函数导入 
  - Step2:数据读取/载入 
+ ```python3
+ ##我们利用sklearn中自带的iris数据作为数据载入，并利用Pandas转化为DataFrame格式
+ from sklearn.datasets import load_iris
+ data = load_iris() #得到数据特征
+ iris_target = data.target #得到数据对应的标签
+ iris_features = pd.DataFrame(data=data.data, columns=data.feature_names) #利用Pandas转化为DataFrame格式
+ ```
+ 
  - Step3:数据信息简单查看 
+  ```python3
+  ##利用.info()查看数据的整体信息
+  iris_features.info()
+
+  ##<class'pandas.core.frame.DataFrame'>
+  ##RangeIndex:150entries,0to149
+  ##Datacolumns(total4columns):
+  ###ColumnNon-NullCountDtype
+  ##----------------------------
+  ##0sepallength(cm)150non-nullfloat64
+  ##1sepalwidth(cm)150non-nullfloat64
+  ##2petallength(cm)150non-nullfloat64
+  ##3petalwidth(cm)150non-nullfloat64
+  ##dtypes:float64(4)
+  ##memoryusage:4.8KB
+  ```
+  ```python3
+  ##进行简单的数据查看，我们可以利用.head()头部.tail()尾部
+  iris_features.head() #iris_features.tail()
+  ```
+  ```python3
+  ##其对应的类别标签为，其中0，1，2分别代表'setosa','versicolor','virginica'三种不同花的类别
+  iris_target
+
+  ##array([0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+
+  ##0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+
+  ##0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+
+  ##1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,
+
+  ##1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,
+
+  ##2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,
+
+  ##2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2])
+  ```
+  
  - Step4:可视化描述 
+ 
  - Step5:利用 逻辑回归模型 在二分类上 进行训练和预测 
  - Step6:利用 逻辑回归模型 在三分类(多分类)上 进行训练和预测
